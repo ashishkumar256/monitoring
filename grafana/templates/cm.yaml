@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-cm
+  namespace: {{ .Values.namespace }}
 data:
   lines.txt: |
 {{- range .Values.config.lines }}

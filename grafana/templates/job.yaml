@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-job-{{ include (print $.Template.BasePath "/cm.yaml") . | sha256sum | trunc 12 }}
+  namespace: {{ .Values.namespace }}
 spec:
   template:
     spec:
@@ -17,10 +18,10 @@ spec:
               echo "$line" | tr '[:lower:]' '[:upper:]'
             done
         volumeMounts:
-        - name: config-volume
+        - name: config
           mountPath: /config
       restartPolicy: Never
     volumes:
-      - name: config-volume
+      - name: config
         configMap:
           name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-cm
