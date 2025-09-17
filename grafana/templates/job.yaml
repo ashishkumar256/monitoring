@@ -7,21 +7,21 @@ spec:
   template:
     spec:
       containers:
-      - name: runner
-        image: {{ .Values.job.image }}
-        command:
-          - sh
-          - -c
-          - |
-            echo "Printing lines in UPPERCASE:"
-            cat /config/lines.txt | while read line; do
-              echo "$line" | tr '[:lower:]' '[:upper:]'
-            done
-        volumeMounts:
-        - name: config
-          mountPath: /config
+        - name: runner
+          image: {{ .Values.job.image }}
+          command:
+            - sh
+            - -c
+            - |
+              echo "Printing lines in UPPERCASE:"
+              cat /config/lines.txt | while read line; do
+                echo "$line" | tr '[:lower:]' '[:upper:]'
+              done
+          volumeMounts:
+            - name: config
+              mountPath: /config
       restartPolicy: Never
-    volumes:
-      - name: config
-        configMap:
-          name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-cm
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-cm
