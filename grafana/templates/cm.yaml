@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-cm
+data:
+  lines.txt: |
+{{- range .Values.config.lines }}
+    {{ . }}
+{{- end }}

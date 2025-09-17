@@ -1,0 +1,103 @@
+app:
+  component: grafana
+  env: sre
+  type: app 
+
+image:
+  repository: grafana/grafana
+  #tag: 9.4.7
+  tag: 10.0.2
+
+namespace: monitoring
+
+config:
+  lines:
+    - "first line"
+    - "second line"
+    - "third line"
+
+job:
+  image: busybox
+
+
+# schedule:
+#   nodeSelector:
+#     eks.amazonaws.com/capacityType: ON_DEMAND
+#     #kubernetes.io/os: linux
+#     beta.kubernetes.io/os: linux
+#   tolerations:
+#   - effect: NoSchedule
+#     key: component
+#     operator: Equal
+#     value: admin
+
+
+# dataSources:
+#   - name: sre
+#     endpoint: https://prometheus-sre.rupifi.com/
+#   - name: dev
+#     endpoint: https://prometheus-dev.rupifi.com/
+#   - name: stg
+#     endpoint: https://prometheus-stg.rupifi.com/
+#   - name: uat
+#     endpoint: https://prometheus-uat.rupifi.com/
+#   - name: prd
+#     endpoint: https://prometheus.rupifi.com/
+
+# dashboards:
+#   redpanda_ops:
+#     - panels/redpanda/ops.json
+#   redpanda_topics:
+#     - panels/redpanda/topics.json
+#   redpanda_offsets:
+#     - panels/redpanda/offsets.json
+#   pods:
+#     - panels/pods/cpu.json
+#     - panels/pods/memory.json
+#     - panels/pods/hpa.json
+#     - panels/pods/core_cpu_throttle.json
+#     #- panels/pods/test.json
+#     - panels/pods/network_bandwidth.json
+#     - panels/pods/network_drop.json
+#     - panels/pods/number_of_pods.json
+#     - panels/pods/percent_cpu_per_pod.json
+#     - panels/pods/percent_memory_per_pod.json
+#     - panels/pods/pods_info.json
+#     - panels/pods/total_pod_restart.json
+#   pod_new:
+#     - panels/pod-new/cpu-pod.json
+#     - panels/pod-new/cpu-container.json
+#     - panels/pod-new/memory-pod.json
+#     - panels/pod-new/memory-container.json
+#     - panels/pod-new/hpa.json
+#     - panels/pod-new/restart.json
+#     - panels/pod-new/pv.json
+#   node_new:
+#     - panels/node-new/cpu.json
+#     - panels/node-new/memory.json
+#     - panels/node-new/storage.json
+#     - panels/node-new/network.json
+#   node:
+#     - panels/node/cpu.json
+#     - panels/node/memory.json
+#   #replica:
+#   #  - panels/replica/hpa.json
+#   service:
+#     #- panels/service/status.json
+#     - panels/service/2xx.json
+#     - panels/service/3xx.json
+#     - panels/service/4xx.json
+#     - panels/service/5xx.json
+#     - panels/service/p50.json
+#     - panels/service/p90.json
+#     - panels/service/p99.json
+#     - panels/service/in.json
+#     - panels/service/out.json
+#     - panels/service/uptime-dns.json
+#     - panels/service/uptime-k8s-svc.json
+#     - panels/service/uptime.json
+#     - panels/service/ssl_expiry.json
+#     - panels/service/response_time.json
+
+#   #  - memory.json
+#   #  - disk.json

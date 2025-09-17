@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-job-{{ include (print $.Template.BasePath "/cm.yaml") . | sha256sum | trunc 12 }}
+spec:
+  template:
+    spec:
+      containers:
+      - name: runner
+        image: {{ .Values.job.image }}
+        command:
+          - sh
+          - -c
+          - |
+            echo "Printing lines in UPPERCASE:"
+            cat /config/lines.txt | while read line; do
+              echo "$line" | tr '[:lower:]' '[:upper:]'
+            done
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+      restartPolicy: Never
+    volumes:
+      - name: config-volume
+        configMap:
+          name: {{ .Values.app.env }}-{{ .Values.app.component }}-{{ .Values.app.type }}-cm

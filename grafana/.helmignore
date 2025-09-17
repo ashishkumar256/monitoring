@@ -1,0 +1,12 @@
+#templates/Grafana.yaml
+#templates/GrafanaDatasource.yaml
+#templates/GrafanaFolder.yaml
+#templates/_helpers.tpl
+#templates/Node-Dashboard.yaml
+#templates/New-Node-Dashboard.yaml
+#templates/Pod-Dashboard.yaml
+#templates/Service-Dashboard.yaml
+#templates/Redpanda-consumer-offsets.yaml
+#templates/Redpanda-Topics-Dashboard.yaml
+#templates/Redpanda-Ops-Dashboard.yaml   
+#templates/Replica-Dashboard.yaml
