@@ -15,6 +15,7 @@ config:
     - "first line"
     - "second line"
     - "third line"
+    - "forth line"
 
 job:
   image: busybox
